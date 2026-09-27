@@ -1,0 +1,38 @@
+[13s] CAD ok; lastro ajustado para 9.0 g -> 1.41 cal, 88.5 g
+[118s] tabela de ângulos ok (melhor sem vento: 44 graus)
+[124s] sensibilidade ok
+[168s] Monte Carlo ok
+{
+ "estabilidade": {
+  "cp_mm": 256.17124475283345,
+  "cg_mm": 219.40889422666967,
+  "cg_burnout_mm": 201.1832652490266,
+  "ref_mm": 26.0,
+  "cal": 1.4139365586986057,
+  "cal_burnout": 2.1149222886079544,
+  "massa_g": 88.5,
+  "massa_seca_g": 66.5,
+  "cna": 14.416907854630994
+ },
+ "elev_recomendada_sem_vento": 44.0,
+ "monte_carlo": {
+  "n": 200,
+  "p10": 234.27933773749007,
+  "p50": 365.15495735660204,
+  "p90": 483.58609840244713,
+  "min": 214.24421295965539,
+  "max": 597.2999913656474,
+  "frac_abaixo_100m": 0.0,
+  "frac_abaixo_30m": 0.0
+ }
+}
+{'nome': 'NOMINAL 7 N.s, 44 graus, sem vento', 'perp': 363.19, 'total': 363.19, 'apogeu': 90.78, 'v_max': 77.62, 'mach_max': 0.22, 'v_vara': 13.1, 'stab_min': 1.38, 'aoa_max': 2.36, 'v_impacto': 44.7, 't_voo': 9.14, 'massa_g': 88.5}
+{'nome': 'Pessimista 5 N.s', 'perp': 234.13, 'total': 234.13, 'apogeu': 49.21, 'v_max': 54.96, 'mach_max': 0.16, 'v_vara': 10.9, 'stab_min': 1.36, 'aoa_max': 3.35, 'v_impacto': 39.28, 't_voo': 6.91, 'massa_g': 88.5}
+{'nome': 'Otimista 9 N.s', 'perp': 468.94, 'total': 468.94, 'apogeu': 133.67, 'v_max': 99.34, 'mach_max': 0.29, 'v_vara': 15.02, 'stab_min': 1.39, 'aoa_max': 1.83, 'v_impacto': 48.25, 't_voo': 10.91, 'massa_g': 88.5}
+{'nome': 'Teto 11,5 N.s (checagem de flutter/velocidade)', 'perp': 572.61, 'total': 572.61, 'apogeu': 193.31, 'v_max': 122.3, 'mach_max': 0.35, 'v_vara': 21.47, 'stab_min': 1.44, 'aoa_max': 1.41, 'v_impacto': 51.76, 't_voo': 12.87, 'massa_g': 88.5}
+{'nome': '7 N.s curva progressiva (pior saida da vara)', 'perp': 356.43, 'total': 356.43, 'apogeu': 81.77, 'v_max': 78.98, 'mach_max': 0.23, 'v_vara': 10.2, 'stab_min': 1.29, 'aoa_max': 3.67, 'v_impacto': 44.29, 't_voo': 8.8, 'massa_g': 88.5}
+{'nome': '7 N.s curva regressiva', 'perp': 366.54, 'total': 366.54, 'apogeu': 97.72, 'v_max': 76.44, 'mach_max': 0.22, 'v_vara': 16.28, 'stab_min': 1.44, 'aoa_max': 1.72, 'v_impacto': 45.03, 't_voo': 9.38, 'massa_g': 88.5}
+{'nome': '7 N.s vento 4 m/s de frente', 'perp': 333.5, 'total': 333.5, 'apogeu': 70.91, 'v_max': 77.16, 'mach_max': 0.23, 'v_vara': 13.07, 'stab_min': 0.93, 'aoa_max': 13.33, 'v_impacto': 41.95, 't_voo': 8.11, 'massa_g': 88.5}
+{'nome': '7 N.s vento 4 m/s de cauda', 'perp': 385.13, 'total': 385.13, 'apogeu': 116.12, 'v_max': 77.47, 'mach_max': 0.21, 'v_vara': 13.11, 'stab_min': 0.83, 'aoa_max': 18.52, 'v_impacto': 47.61, 't_voo': 10.29, 'massa_g': 88.5}
+{'nome': '7 N.s vento 4 m/s lateral', 'perp': 352.17, 'total': 356.24, 'apogeu': 88.26, 'v_max': 77.06, 'mach_max': 0.22, 'v_vara': 13.09, 'stab_min': 0.71, 'aoa_max': 21.53, 'v_impacto': 44.23, 't_voo': 9.02, 'massa_g': 88.5}
+[fim em 176s]

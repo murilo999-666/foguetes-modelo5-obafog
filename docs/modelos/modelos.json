@@ -1,0 +1,151 @@
+{
+ "F1_A": {
+  "tag": "F1_A",
+  "pecas": [
+   {
+    "arquivo": "F1_A_lata.stl",
+    "z": 0.0,
+    "cor": "#eb6834",
+    "nome": "Lata de aletas (luva do motor + guias)",
+    "massa_g": 18.7
+   },
+   {
+    "arquivo": "F1_A_ogiva.stl",
+    "z": 85.0,
+    "cor": "#2a78d6",
+    "nome": "Ogiva",
+    "massa_g": 11.7
+   }
+  ],
+  "motor": {
+   "tubo": [
+    -18.0,
+    82.0,
+    10.0
+   ],
+   "cap": [
+    -21.0,
+    -3.0,
+    12.3
+   ]
+  },
+  "comprimento_mm": 326.0
+ },
+ "F1_B": {
+  "tag": "F1_B",
+  "pecas": [
+   {
+    "arquivo": "F1_B_lata.stl",
+    "z": 0.0,
+    "cor": "#eb6834",
+    "nome": "Lata de aletas (luva do motor + guias)",
+    "massa_g": 20.3
+   },
+   {
+    "arquivo": "F1_B_tubo.stl",
+    "z": 100.0,
+    "cor": "#f2a57f",
+    "nome": "Tubo do corpo",
+    "massa_g": 5.0
+   },
+   {
+    "arquivo": "F1_B_ogiva.stl",
+    "z": 140.0,
+    "cor": "#2a78d6",
+    "nome": "Ogiva",
+    "massa_g": 10.3
+   }
+  ],
+  "motor": {
+   "tubo": [
+    -18.0,
+    82.0,
+    10.0
+   ],
+   "cap": [
+    -21.0,
+    -3.0,
+    12.3
+   ]
+  },
+  "comprimento_mm": 326.0
+ },
+ "F2_29": {
+  "tag": "F2_29",
+  "pecas": [
+   {
+    "arquivo": "F2_29_lata.stl",
+    "z": 0.0,
+    "cor": "#eb6834",
+    "nome": "Lata de aletas (luva do motor + guias)",
+    "massa_g": 25.5
+   },
+   {
+    "arquivo": "F2_29_tubo.stl",
+    "z": 100.0,
+    "cor": "#f2a57f",
+    "nome": "Tubo do corpo",
+    "massa_g": 15.5
+   },
+   {
+    "arquivo": "F2_29_ogiva.stl",
+    "z": 215.0,
+    "cor": "#2a78d6",
+    "nome": "Ogiva",
+    "massa_g": 12.5
+   }
+  ],
+  "motor": {
+   "tubo": [
+    -18.0,
+    82.0,
+    10.0
+   ],
+   "cap": [
+    -21.0,
+    -3.0,
+    12.3
+   ]
+  },
+  "comprimento_mm": 406.0
+ },
+ "F2_26": {
+  "tag": "F2_26",
+  "pecas": [
+   {
+    "arquivo": "F2_26_lata.stl",
+    "z": 0.0,
+    "cor": "#eb6834",
+    "nome": "Lata de aletas (luva do motor + guias)",
+    "massa_g": 20.0
+   },
+   {
+    "arquivo": "F2_26_tubo.stl",
+    "z": 100.0,
+    "cor": "#f2a57f",
+    "nome": "Tubo do corpo",
+    "massa_g": 14.7
+   },
+   {
+    "arquivo": "F2_26_ogiva.stl",
+    "z": 225.0,
+    "cor": "#2a78d6",
+    "nome": "Ogiva",
+    "massa_g": 7.4
+   }
+  ],
+  "motor": {
+   "tubo": [
+    -18.0,
+    82.0,
+    10.0
+   ],
+   "cap": [
+    -21.0,
+    -3.0,
+    12.3
+   ]
+  },
+  "comprimento_mm": 366.0
+ }
+}

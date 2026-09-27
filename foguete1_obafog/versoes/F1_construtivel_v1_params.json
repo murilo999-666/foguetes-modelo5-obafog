@@ -1,0 +1,14 @@
+{
+ "nose_shape": "POWER",
+ "nose_param": 0.5,
+ "nose_len": 205.0,
+ "body_len": 0.0,
+ "fin_n": 3,
+ "fin_root": 30.0,
+ "fin_tip": 8.0,
+ "fin_sweep": 22.0,
+ "fin_span": 42.0,
+ "fin_t": 1.6,
+ "ballast_g": 13.0,
+ "elev": 44.0
+}

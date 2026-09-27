@@ -1,0 +1,35 @@
+; OBAFOG Modelo 5 - motor oficial (PVC 20x100, 22 g, cap 7 mm) - CURVA ESTIMADA
+; envelope NEU | impulso 9.00 N.s | Isp 41.7 s | queima 1.20 s | pico 9.0 N | medio 7.50 N
+; massa sem o cap (35.9 g); o cap (~5 g) e um componente de massa do foguete
+; substituir pela curva do teste estatico assim que houver (motor/teste_estatico/)
+OBAFOG-M5_NEU_I09 20 103 P 0.0220 0.0359 OBAFOG-est
+   0.0360 7.065
+   0.0500 7.841
+   0.0720 9.033
+   0.1000 8.900
+   0.1500 8.645
+   0.1800 8.494
+   0.2000 8.470
+   0.2500 8.414
+   0.3000 8.358
+   0.3500 8.301
+   0.4000 8.245
+   0.4500 8.189
+   0.5000 8.133
+   0.5500 8.077
+   0.6000 8.021
+   0.6500 7.983
+   0.7000 7.946
+   0.7500 7.908
+   0.8000 7.871
+   0.8500 7.833
+   0.9000 7.796
+   0.9500 7.758
+   1.0000 7.721
+   1.0200 7.698
+   1.0500 7.018
+   1.1000 5.871
+   1.1160 5.496
+   1.1500 3.276
+   1.2000 0.000
+;

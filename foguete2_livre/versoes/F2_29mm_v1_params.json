@@ -1,0 +1,16 @@
+{
+ "D": 29.0,
+ "nose_shape": "ELLIPSOID",
+ "nose_param": 0.0,
+ "nose_len": 115.0,
+ "nose_shoulder": 55.0,
+ "body_len": 170.0,
+ "fin_n": 3,
+ "fin_root": 36.0,
+ "fin_tip": 10.0,
+ "fin_sweep": 26.0,
+ "fin_span": 39.0,
+ "fin_t": 1.6,
+ "ballast_g": 0.0,
+ "chute_lines": 8
+}

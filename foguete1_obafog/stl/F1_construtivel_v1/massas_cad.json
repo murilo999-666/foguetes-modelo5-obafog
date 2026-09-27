@@ -1,0 +1,18 @@
+{
+ "ogiva": {
+  "massa_g": 11.729,
+  "cg_mm": 132.633
+ },
+ "lata_estrutura": {
+  "massa_g": 12.239,
+  "cg_mm": 47.096
+ },
+ "aletas": {
+  "massa_g": 5.164,
+  "cg_mm": 18.921
+ },
+ "guia_traseira": {
+  "massa_g": 1.274,
+  "cg_mm": -26.213
+ }
+}

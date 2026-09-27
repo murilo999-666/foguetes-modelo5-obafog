@@ -1,0 +1,22 @@
+{
+ "ogiva": {
+  "massa_g": 10.353,
+  "cg_mm": 94.515
+ },
+ "tubo_corpo": {
+  "massa_g": 4.958,
+  "cg_mm": 25.885
+ },
+ "lata_estrutura": {
+  "massa_g": 13.669,
+  "cg_mm": 41.631
+ },
+ "aletas": {
+  "massa_g": 5.958,
+  "cg_mm": 18.077
+ },
+ "guia_traseira": {
+  "massa_g": 0.662,
+  "cg_mm": 10.0
+ }
+}

@@ -1,0 +1,22 @@
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``multivariate`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``group`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``constant_liar`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+[   45s] #4 J=50.4 apo=95 min=47 D=29 m=144g cal=2.13 vara=9.5 abre=9.5 desce=4.5 chute=410 L=465 ELLIPSOID aletas 3x70/34/34/21 t1.6 lastro 0.0
+[   66s] #23 J=59.2 apo=101 min=50 D=29 m=141g cal=2.35 vara=9.7 abre=9.5 desce=4.4 chute=410 L=440 POWER aletas 4x47/10/30/16 t2.0 lastro 1.5
+[   71s] #26 J=77.1 apo=114 min=57 D=26 m=133g cal=2.33 vara=10.0 abre=9.5 desce=4.5 chute=390 L=455 ELLIPSOID aletas 3x48/17/35/0 t1.6 lastro 0.5
+[  100s] #70 J=77.5 apo=116 min=58 D=26 m=133g cal=1.61 vara=10.0 abre=9.7 desce=4.5 chute=390 L=370 POWER aletas 3x45/36/26/3 t2.0 lastro 6.0
+[  103s] #74 J=81.3 apo=116 min=59 D=26 m=132g cal=2.31 vara=10.1 abre=9.5 desce=4.4 chute=390 L=445 ELLIPSOID aletas 3x43/20/35/5 t1.6 lastro 0.0
+[  105s] #83 J=82.2 apo=117 min=59 D=29 m=131g cal=1.56 vara=10.1 abre=9.5 desce=4.4 chute=390 L=385 ELLIPSOID aletas 3x36/10/39/4 t1.6 lastro 0.0
+[  247s] #246 J=86.6 apo=121 min=61 D=26 m=130g cal=1.96 vara=10.2 abre=9.7 desce=4.4 chute=390 L=385 POWER aletas 3x36/19/26/4 t1.2 lastro 6.5
+[  274s] #278 J=87.2 apo=123 min=62 D=26 m=129g cal=1.39 vara=10.2 abre=9.9 desce=4.4 chute=390 L=415 POWER aletas 4x38/2/21/15 t1.6 lastro 4.5
+[  282s] #287 J=87.4 apo=122 min=62 D=26 m=129g cal=2.06 vara=10.2 abre=9.7 desce=4.4 chute=390 L=375 POWER aletas 3x35/21/28/5 t1.6 lastro 5.0
+[  291s] #297 J=87.7 apo=122 min=62 D=26 m=129g cal=2.06 vara=10.2 abre=9.7 desce=4.4 chute=390 L=405 POWER aletas 4x39/8/25/12 t1.6 lastro 3.0
+[  296s] #304 J=89.2 apo=123 min=62 D=26 m=129g cal=1.84 vara=10.2 abre=9.6 desce=4.4 chute=390 L=390 POWER aletas 4x45/11/27/6 t1.6 lastro 2.5
+[  308s] #317 J=93.3 apo=126 min=64 D=26 m=127g cal=1.52 vara=10.3 abre=9.8 desce=4.5 chute=380 L=415 HAACK aletas 4x45/5/24/9 t1.2 lastro 2.5
+[  314s] #322 J=95.1 apo=127 min=65 D=26 m=127g cal=1.79 vara=10.3 abre=9.7 desce=4.5 chute=380 L=395 HAACK aletas 4x38/8/25/8 t1.2 lastro 3.5
+[  328s] #333 J=96.1 apo=128 min=65 D=26 m=126g cal=1.75 vara=10.4 abre=9.7 desce=4.5 chute=380 L=390 POWER aletas 4x39/1/26/11 t1.6 lastro 2.5
+[  369s] #398 J=99.6 apo=131 min=66 D=26 m=125g cal=1.61 vara=10.4 abre=9.7 desce=4.4 chute=380 L=345 POWER aletas 3x38/23/26/14 t1.6 lastro 3.0
+[fim em 453s]

@@ -1,0 +1,16 @@
+{
+ "D": 26.0,
+ "nose_shape": "POWER",
+ "nose_param": 0.5,
+ "nose_len": 65.0,
+ "nose_shoulder": 55.0,
+ "body_len": 180.0,
+ "fin_n": 3,
+ "fin_root": 38.0,
+ "fin_tip": 23.0,
+ "fin_sweep": 15.0,
+ "fin_span": 26.0,
+ "fin_t": 1.6,
+ "ballast_g": 3.0,
+ "chute_lines": 8
+}

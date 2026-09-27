@@ -1,0 +1,15 @@
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``multivariate`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``group`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``constant_liar`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\trial\_trial.py:664: UserWarning: Fixed parameter fin_root with value 70 is out of range for distribution IntDistribution(high=60, log=False, low=28, step=1).
+  optuna_warn(
+[    62s] #15 J=278.2 media=320 min=183 cal=1.49 m=96g vara=12.5 elev=45 POWER L=410 aletas 3x35/25/41/1 t1.6 lastro 7.0g
+[    64s] #6 J=286.9 media=329 min=194 cal=1.46 m=97g vara=12.4 elev=49 POWER L=395 aletas 3x29/6/32/19 t1.6 lastro 12.5g
+[   180s] #80 J=301.3 media=346 min=189 cal=1.50 m=95g vara=12.6 elev=44 POWER L=305 aletas 3x30/8/42/9 t1.6 lastro 17.5g
+   ... 100/450 avaliados, 33 viáveis, 191s
+[   364s] #149 J=308.4 media=349 min=198 cal=1.43 m=93g vara=12.8 elev=45 HAACK L=335 aletas 3x31/6/44/12 t1.6 lastro 12.0g
+   ... 200/450 avaliados, 96 viáveis, 623s
+   ... 300/450 avaliados, 152 viáveis, 1012s

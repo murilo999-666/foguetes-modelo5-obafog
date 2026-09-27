@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foguetes com motor sólido</title>
+<meta name="description" content="Dois foguetes com o motor sólido oficial da OBAFOG: um Modelo 5 para alcance e um livre com eletrônica e paraquedas. Pesquisa, OpenRocket, impressão 3D, firmware e simulações.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4c9 8 13 20 13 32v10H19V36C19 24 23 12 32 4z' fill='%232a78d6'/%3E%3Cpath d='M19 40l-9 12h9zM45 40l9 12h-9z' fill='%23eb6834'/%3E%3Ccircle cx='32' cy='26' r='5' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/estilo.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<header class="topo">
+  <div class="topo-in">
+    <a class="marca" href="#inicio">🚀 Motor sólido OBAFOG</a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#desafio">Desafio</a><a href="#motor">Motor</a><a href="#foguete1">Foguete 1</a>
+      <a href="#tresd">3D</a><a href="#otimizacao">Otimização</a><a href="#foguete2">Foguete 2</a>
+      <a href="#eletronica">Eletrônica</a><a href="#metodo">Método</a><a href="#plano">Plano</a><a href="#arquivos">Arquivos</a>
+    </nav>
+    <button id="tema" class="tema" type="button">☾ Escuro</button>
+  </div>
+</header>
+
+<main>
+<!-- ===================== INÍCIO ===================== -->
+<section id="inicio" class="heroi">
+  <div class="olho">OBAFOG · Modelo 5 · projeto de engenharia</div>
+  <h1>Dois foguetes com o motor sólido da OBAFOG</h1>
+  <p class="lead">Um foguete de alcance para o Modelo 5 da Olimpíada Brasileira de Foguetes (100ª Jornada de Foguetes, dezembro de 2026) e um foguete livre com computador de voo e paraquedas. Os dois usam o mesmo motor oficial e foram pensados para serem impressos em 3D. Cada número desta página vem de simulação no OpenRocket, com o motor tratado pelo que se sabe dele e pelo que ainda falta medir.</p>
+  <div class="heroi-img fig-or">
+    <img src="img/openrocket_F1_A_lateral.png" alt="Vista lateral do Foguete 1 no OpenRocket, com CG, CP, lastro no bico, motor e aletas" loading="eager">
+  </div>
+  <div class="legenda">Foguete 1, variante A, desenhado pelo próprio OpenRocket 24.12: CG (círculo azul e branco) a 22,5 cm e CP (vermelho) a 26,1 cm da ponta, margem estática de 1,41 calibre. Os tracejados no bico são o lastro de massa epóxi, modelado em 8 discos porque a massa se concentra na base do cone; o cinza é o motor.</div>
+  <div class="tiles" id="tiles"></div>
+</section>
+
+<!-- ===================== DESAFIO ===================== -->
+<section id="desafio">
+  <div class="olho">O desafio</div>
+  <h2>Modelo 5: quem chega mais longe na horizontal</h2>
+  <p class="lead">O Modelo 5 é o único da OBAFOG com propelente sólido. O foguete tem formato livre, mas o motor é obrigatório e não pode ser alterado em nada.</p>
+  <div class="grade2">
+    <div class="cartao">
+      <h3>O que o regulamento exige</h3>
+      <div class="tabela-wrap"><table>
+        <tr><th>Regra</th><th>Como o projeto atende</th></tr>
+        <tr><td>Só o motor descrito pela OBAFOG, sem alteração (p. 3)</td><td><span class="selo ok">atende</span> O foguete foi projetado em volta dele</td></tr>
+        <tr><td>Qualquer material, menos metal (p. 2, p. 10)</td><td><span class="selo ok">atende</span> PLA/PETG impresso; lastro de massa epóxi</td></tr>
+        <tr><td>Impressão 3D permitida (p. 2, p. 10)</td><td><span class="selo ok">atende</span></td></tr>
+        <tr><td>Duas guias que deslizam na vara (p. 11)</td><td><span class="selo ok">atende</span> Guias de 7,65 mm para a haste de 6 mm</td></tr>
+        <tr><td>(CP − CG)/Dmax "igual ou ligeiramente maior que 1,0" (p. 9–10)</td><td><span class="selo amb">ambíguo</span> Projeto com 1,41; "ligeiramente" não tem número</td></tr>
+        <tr><td>Lançamento oblíquo, maior alcance (p. 3)</td><td><span class="selo ok">atende</span> Otimizado para alcance</td></tr>
+      </table></div>
+      <p class="pequeno">Regulamento da 20ª OBAFOG — Modelo 5 (17/02/2026). Análise completa, regra por regra, em <code>regulamento/CONFORMIDADE.md</code>.</p>
+    </div>
+    <div class="cartao">
+      <h3>A 100ª Jornada de Foguetes, Turma 15</h3>
+      <ul class="limpa">
+        <li><b>07 a 10/12/2026</b>, Barra do Piraí (RJ). É a única turma de 2026 com Modelo 5.</li>
+        <li>As equipes <b>não levam motor</b>: ele é fabricado no evento com material da organização.</li>
+        <li>A organização empresta uma <b>haste de aço de 6 mm × 1,5 m</b>, fincada no ângulo que a equipe escolher.</li>
+        <li>O alcance é medido <b>perpendicular à linha de lançamento</b>: vento lateral não soma.</li>
+        <li>Dois lançamentos, um por dia; vale o maior. Foguete não achado até 30 min depois da medição fica com zero.</li>
+      </ul>
+      <p class="pequeno">Edital da 100ª Jornada de Foguetes, Turma 15 (08/06/2026), p. 13–15.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MOTOR ===================== -->
+<section id="motor">
+  <div class="olho">O motor</div>
+  <h2>O motor oficial, tratado como caixa-preta</h2>
+  <p class="lead">A OBA publica como fazer o motor, mas não publica a curva de empuxo. Os dados abaixo foram tirados dos vídeos oficiais (208, 210, 214–216). O impulso foi limitado por medições publicadas de motores parecidos.</p>
+  <div class="grade2">
+    <div class="cartao">
+      <h3>O que se sabe</h3>
+      <div class="tabela-wrap"><table>
+        <tr><td>Carcaça</td><td>cano PVC marrom soldável 20 mm × 100 mm</td></tr>
+        <tr><td>Propelente</td><td>22 g, compactado, com furo central</td></tr>
+        <tr><td>Tubeira</td><td>cap do cano com furo de 7 mm, <b>não colado</b></td></tr>
+        <tr><td>Tempo de queima</td><td><b>~1,2 s</b> (medido pela OBA em balança)</td></tr>
+        <tr><td>Histórico</td><td>mais de 1.200 acionamentos sem explosão</td></tr>
+        <tr><td>Impulso (não publicado)</td><td>nominal <b>7 N·s</b>, faixa de projeto 5 a 11,5 N·s — motor classe C</td></tr>
+      </table></div>
+      <p class="nota">Referências publicadas: KNSu a frio com KNO₃ impuro (Revista Brasileira de Ensino de Física) deu Isp de ~39 s; KNSu prensado a 3–10 t com tubeira metálica (GFCS/UFPR), 63–82 s. O motor da OBA, compactado por queda de peso e com tubeira de plástico que erode, deve ficar abaixo dos dois: 7 N·s com 22 g de propelente equivale a Isp de 32 s.</p>
+    </div>
+    <div class="cartao"><div id="g-motor-impulso"></div></div>
+  </div>
+<div class="cartao diagrama" style="margin-top:16px">
+    <h3>Por onde passa o empuxo</h3>
+    <div class="rolar"><svg viewBox="0 0 720 262" role="img" aria-label="Esquema do motor dentro da lata de aletas">
+      <line x1="30" y1="46" x2="560" y2="46" class="seta" style="stroke:var(--s2);stroke-width:3"/>
+      <line x1="30" y1="194" x2="560" y2="194" class="seta" style="stroke:var(--s2);stroke-width:3"/>
+      <text x="40" y="36" class="sub">lata de aletas impressa</text>
+      <path d="M150 70 L112 120 L150 170" class="seta" style="stroke:var(--s2);stroke-width:3"/>
+      <text x="40" y="232" class="sub">batente cônico (anel de empuxo)</text>
+      <line x1="120" y1="222" x2="125" y2="150" class="seta"/>
+      <rect x="150" y="72" width="468" height="96" rx="3" style="fill:#9a9a95"/>
+      <rect x="170" y="84" width="420" height="72" style="fill:#c9c2a8"/>
+      <rect x="190" y="112" width="400" height="16" style="fill:#fff"/>
+      <rect x="152" y="84" width="18" height="72" style="fill:#7b7b76"/>
+      <text x="300" y="104" style="font-size:12px;fill:#1a1a1a">propelente (22 g) com furo central</text>
+      <rect x="570" y="62" width="70" height="116" rx="4" style="fill:#c9b98f"/>
+      <rect x="628" y="113" width="12" height="14" style="fill:var(--superficie)"/>
+      <path d="M646 120 h60" class="seta"/><path d="M696 114 l10 6 -10 6" class="seta"/>
+      <text x="652" y="108" class="sub">gases</text>
+      <path d="M250 60 h-120" class="seta" style="stroke:var(--s1);stroke-width:2.5"/>
+      <path d="M140 54 l-10 6 10 6" class="seta" style="stroke:var(--s1);stroke-width:2.5"/>
+      <text x="256" y="64" style="font-size:12px;fill:var(--tinta)">empuxo: borda do cano empurra o batente</text>
+      <line x1="560" y1="30" x2="560" y2="210" class="seta" style="stroke-dasharray:0"/>
+      <text x="468" y="222" class="sub">3 mm de folga: nada encosta no cap</text>
+      <text x="712" y="240" class="sub" text-anchor="end">cap com furo de 7 mm, sem cola:</text>
+      <text x="712" y="255" class="sub" text-anchor="end">salta se a pressão subir</text>
+    </svg></div>
+    <p class="nota">O cap não é colado de propósito: ele funciona como válvula de alívio (vídeo 210). Por isso o foguete apoia o motor pela <b>borda do cano</b>, nunca pelo cap, e a fita crepe vai no cano.</p>
+  </div>
+  <div class="grade2" style="margin-top:16px">
+    <div class="cartao"><div id="g-motor-formato"></div></div>
+    <div class="cartao"><div id="g-calib"></div>
+  <p class="nota" style="margin-top:10px">Com 7 N·s, as 11 garrafas simuladas vão de 119 a 142 m, acima dos ~100 m que a OBA mostra (às vezes passam de 150 m). Ou o motor rende menos que isso, ou o OpenRocket subestima o arrasto de foguete artesanal (fita, coifa rombuda, aleta torta). Por isso o nominal ficou no lado baixo, em 7 N·s, e a faixa de projeto vai de 5 a 11,5 N·s.</p></div>
+  </div>
+</section>
+
+<!-- ===================== FOGUETE 1 ===================== -->
+<section id="foguete1">
+  <div class="olho">Foguete 1 · OBAFOG Modelo 5</div>
+  <h2>Leve, fino e com a ogiva longa</h2>
+  <p class="lead">Corpo de 26 mm impresso, ogiva longa com lastro de massa epóxi no bico e lata de aletas com a luva do motor e as duas guias numa peça só. Assim as guias saem alinhadas por construção.</p>
+  <div class="fig-lado">
+    <div class="fig-or"><img src="img/openrocket_F1_A_lateral.png" alt="Foguete 1 variante A no OpenRocket, vista lateral" loading="lazy"></div>
+    <div class="fig-or"><img src="img/openrocket_F1_A_traseira.png" alt="Foguete 1 variante A no OpenRocket, vista traseira com três aletas e a guia" loading="lazy"></div>
+  </div>
+  <div class="legenda">Vistas lateral e traseira geradas pelo OpenRocket. Na traseira: 3 aletas a 120° e a guia da haste entre duas delas.</div>
+  <h3>Variante A e variante B</h3>
+  <p class="nota">A ogiva da variante A precisa de 220 mm de altura de impressão. Para impressoras mais baixas, a variante B usa ogiva de 150 mm (165 mm de altura) e voa cerca de 20 m a menos.</p>
+  <div class="cartao" id="t-f1-comparativo"></div>
+  <div class="cartao" style="margin-top:16px"><div id="g-f1-traj"></div></div>
+  <h3>Qual ângulo usar</h3>
+  <div class="com-fig">
+    <p class="nota">Sem vento, o melhor é 44°. A curva é plana: entre 40° e 48° o alcance muda menos de 6 m. Por isso a flexão da haste de 6 mm, que verga uns 4 cm na ponta com o próprio peso (~2,5°), quase não pesa. Mesmo assim, o ângulo deve ser medido na metade de cima da haste. Para isso há um <a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/blob/main/foguete1_obafog/moldes/transferidor_haste.pdf">transferidor para imprimir</a>: encostado na haste, o fio de prumo marca a elevação direto.</p>
+    <img src="img/molde_transferidor.png" alt="Molde do transferidor que lê a elevação da haste com fio de prumo" class="miniatura" loading="lazy">
+  </div>
+  <div class="grade2">
+    <div class="cartao"><div id="g-f1-ang-frente"></div></div>
+    <div class="cartao"><div id="g-f1-ang-cauda"></div></div>
+  </div>
+  <div class="cartao" style="margin-top:16px" id="t-f1-angulos"></div>
+  <div class="cartao" style="margin-top:16px"><div id="g-f1-mc"></div>
+    <p class="nota" style="margin-top:10px">O pior dos 200 voos ainda passou de 220 m. Mas isto é simulação: até o primeiro voo de teste, o certo é esperar algo 10–30% abaixo, como indicou a checagem com as garrafas.</p></div>
+  <h3>Todas as simulações guardadas no arquivo</h3>
+  <div class="cartao"><div id="t-f1-sims"></div>
+    <p class="pequeno">Com 4 m/s de vento, a estabilidade mínima calculada cai para 0,8–1,0 cal: o vento cria ângulo de ataque, e o OpenRocket recalcula o CP com esse ângulo. A exigência de ≥ 1,0 cal da otimização vale para o voo sem vento.</p></div>
+</section>
+
+<!-- ===================== 3D ===================== -->
+<section id="tresd">
+  <div class="olho">Peças impressas</div>
+  <h2>Os foguetes em 3D</h2>
+  <p class="lead">As mesmas peças que vão para a impressora, geradas pelo mesmo código e montadas na posição de voo (a malha daqui é mais leve, para carregar rápido). Arraste para girar e role para aproximar.</p>
+  <div class="v3d" id="v3d">
+    <div class="palco"></div>
+    <div class="ctrl">
+      <button type="button" data-tag="F1_A">Foguete 1 · A</button>
+      <button type="button" data-tag="F1_B">Foguete 1 · B</button>
+      <button type="button" data-tag="F2_29">Foguete 2 · 29 mm</button>
+      <button type="button" data-tag="F2_26">Foguete 2 · 26 mm</button>
+      <button type="button" data-acao="girar">Girar</button>
+      <label class="chk"><input type="checkbox" data-acao="motor" checked> motor</label>
+      <label class="chk">separar peças <input type="range" min="0" max="60" value="0" data-acao="explodir"></label>
+    </div>
+    <div class="info3d"><span class="pecas"></span><span>azul: ogiva · laranja: lata e tubo · cinza: motor · bege: cap</span></div>
+    <div class="fallback" hidden>
+      <p class="nota">O visualizador 3D precisa de WebGL. Imagens das montagens:</p>
+      <div class="grade3">
+        <img src="img/render_F1_A.png" alt="Foguete 1 variante A montado" loading="lazy">
+        <img src="img/render_F1_B.png" alt="Foguete 1 variante B montado" loading="lazy">
+        <img src="img/render_F2_29.png" alt="Foguete 2 de 29 mm montado" loading="lazy">
+        <img src="img/render_F2_26.png" alt="Foguete 2 de 26 mm montado" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="grade3" style="margin-top:16px">
+    <div class="cartao"><h4>Tudo imprime sem suporte</h4><p class="nota">Peças em pé. O teto da luva é cônico a 45°, o anel dianteiro tem chanfro e há uma cunha sob a guia dianteira. Os bordos de fuga das aletas ficam deitados na mesa.</p></div>
+    <div class="cartao"><h4>Massas vêm do próprio STL</h4><p class="nota">Volume × densidade do PLA de cada peça, com o CG calculado do sólido, voltam para o OpenRocket como massa sobrescrita. Assim o foguete simulado pesa o que a peça impressa deve pesar; depois, a balança confere.</p></div>
+    <div class="cartao"><h4>Gabaritos antes do foguete</h4><p class="nota">Anéis de 20,3 a 20,9 mm testam o encaixe do cano de PVC, e guias de 6,8 a 8,0 mm testam a haste. Cada impressora fecha furos de um jeito.</p></div>
+  </div>
+</section>
+
+<!-- ===================== OTIMIZAÇÃO ===================== -->
+<section id="otimizacao">
+  <div class="olho">Como a forma foi escolhida</div>
+  <h2>Milhares de foguetes simulados, e o que eles ensinaram</h2>
+  <p class="lead">Cada candidato foi montado de verdade no OpenRocket (ogiva, lata, aletas, luva, guias, cap e lastro), voou em vários cenários de motor e vento e recebeu uma nota de alcance robusto. A busca foi feita com Optuna em dez processos paralelos.</p>
+  <div class="cartao"><div id="g-otm"></div></div>
+  <div class="grade2" style="margin-top:16px">
+    <div class="cartao">
+      <h3>Restrições que todo projeto teve de cumprir</h3>
+      <ul class="limpa">
+        <li>Margem estática com o motor entre 1,2 e 2,5 cal; mínima em voo ≥ 1,0 cal (motor nominal, sem vento)</li>
+        <li>Sair da vara a ≥ 11 m/s com o motor nominal e ≥ 7 m/s com o pior (progressivo de 5 N·s)</li>
+        <li>Flutter da aleta (NACA TN 4197): velocidade crítica ≥ 1,5 × a máxima do voo mais rápido (11,5 N·s)</li>
+        <li>Aleta imprimível sem suporte; comprimento ≤ 650 mm</li>
+        <li>Na versão construível: raiz ≥ 28 mm, espessura ≥ 1,6 mm, envergadura ≤ 45 mm e margem ≥ 1,35 cal</li>
+      </ul>
+    </div>
+    <div class="cartao">
+      <h3>Três lições</h3>
+      <ul class="limpa">
+        <li><b>Mais leve voa mais longe.</b> O lastro entra só na medida da estabilidade.</li>
+        <li><b>A ogiva longa ganha do tubo comprido.</b> Ela dá braço de alavanca com menos área e menos massa.</li>
+        <li><b>O OpenRocket não vê fragilidade.</b> Solta, a busca afinou a aleta até 18 mm de raiz e 1,2 mm de espessura. A versão construível custa ~20 m de média e sobrevive ao manuseio e ao pouso.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cartao" style="margin-top:16px"><div id="t-comparacao"></div>
+    <p class="pequeno">Nesta tabela os três têm as massas estimadas pelo próprio OpenRocket, para comparar igual com igual. Com as massas tiradas do CAD, a variante A pesa 86,3 g, leva 12 g de lastro e faz 384 m no nominal.</p></div>
+  <div class="cartao" style="margin-top:16px"><div id="g-sens"></div></div>
+</section>
+
+<!-- ===================== FOGUETE 2 ===================== -->
+<section id="foguete2">
+  <div class="olho">Foguete 2 · livre</div>
+  <h2>Computador de voo e paraquedas, sem pólvora</h2>
+  <p class="lead">Mesmo motor e voo quase vertical (87°). O barômetro detecta o apogeu; um micro servo solta a ogiva, e uma mola empurra o paraquedas para fora. A eletrônica fica no ombro da ogiva e serve também como o peso que dá estabilidade.</p>
+  <div class="fig-lado">
+    <div class="fig-or"><img src="img/openrocket_F2_29_lateral.png" alt="Foguete 2 de 29 mm no OpenRocket, com eletrônica, paraquedas e mola" loading="lazy"></div>
+    <div class="fig-or"><img src="img/openrocket_F2_29_traseira.png" alt="Foguete 2 vista traseira" loading="lazy"></div>
+  </div>
+  <div class="legenda">No OpenRocket: bateria, ESP32, barômetro, servo e buzzer no ombro da ogiva; paraquedas (vermelho), cordão e mola na baia; motor na lata. Margem de 1,85 cal.</div>
+  <div class="grade2" style="margin-top:16px">
+    <div class="cartao"><div id="g-f2-alt"></div></div>
+    <div class="cartao"><div id="g-f2-deriva"></div>
+      <p class="nota" style="margin-top:10px">Recomendado para a primeira montagem: a versão de 29 mm, com mais espaço para a eletrônica e o paraquedas. A de 26 mm sobe ~20% mais, mas não consegue limitar o apogeu com lastro se o motor vier forte.</p></div>
+  </div>
+  <h3>Altura, NOTAM e lastro</h3>
+  <p class="nota">A norma BAR-2/2020 da Associação Brasileira de Minifoguetes orienta pedir NOTAM se o apogeu passar de 150 m em área rural. O motor real decide isso. Depois do teste estático, esta tabela diz quanta massa epóxi pôr no bico:</p>
+  <div class="cartao" id="t-f2-lastro"></div>
+  <div class="cartao" style="margin-top:16px" id="t-f2-sims"></div>
+  <div class="grade2" style="margin-top:16px">
+    <div class="cartao">
+      <h3>Paraquedas</h3>
+      <p class="nota">Octógono de 390 mm em plástico de saco de lixo grosso (~35 µm), com 8 linhas de nylon. Foi dimensionado para descer a ~4,5 m/s: D = √(8mg / πρC<sub>d</sub>v²). O molde sai em A4, tamanho real.</p>
+      <img src="img/molde_paraquedas.png" alt="Molde do gomo do paraquedas" loading="lazy" style="max-width:170px;border:1px solid var(--borda);border-radius:8px">
+    </div>
+    <div class="cartao">
+      <h3>Trava e ejeção</h3>
+      <p class="nota">O braço do servo sai por uma fenda no ombro da ogiva e entra numa janela do tubo. Uma nervura garante o alinhamento. Travado, a mola fica comprimida entre o pistão e a antepara da lata. No apogeu, o servo recolhe o braço e a mola tira a ogiva. A própria janela serve de tomada de ar do barômetro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ELETRÔNICA ===================== -->
+<section id="eletronica">
+  <div class="olho">Eletrônica e firmware</div>
+  <h2>ESP32-C3, barômetro e um filtro de Kalman</h2>
+  <div class="pilha">
+    <div class="cartao diagrama">
+      <h3>Ligação</h3>
+      <div class="rolar"><svg viewBox="0 0 700 330" role="img" aria-label="Diagrama de blocos da eletrônica">
+        <rect x="14" y="20" width="150" height="44" rx="8" class="caixa"/><text x="89" y="40" text-anchor="middle">LiPo 1S 150–250 mAh</text><text x="89" y="56" text-anchor="middle" class="sub">3,7–4,2 V</text>
+        <rect x="200" y="20" width="80" height="44" rx="8" class="caixa"/><text x="240" y="47" text-anchor="middle">chave</text>
+        <path d="M164 42 H200" class="seta"/>
+        <rect x="330" y="120" width="190" height="90" rx="10" class="caixa-d"/><text x="425" y="146" text-anchor="middle" style="font-weight:600">ESP32-C3 SuperMini</text>
+        <text x="425" y="164" text-anchor="middle" class="sub">pino 5V → regulador → 3,3 V</text><text x="425" y="180" text-anchor="middle" class="sub">log em flash · Wi-Fi só no chão</text><text x="425" y="196" text-anchor="middle" class="sub">23–28 mA sem Wi-Fi</text>
+        <path d="M280 42 H425 V120" class="seta"/>
+        <rect x="560" y="20" width="126" height="44" rx="8" class="caixa"/><text x="623" y="40" text-anchor="middle">micro servo 3,7 g</text><text x="623" y="56" text-anchor="middle" class="sub">trava da ogiva</text>
+        <path d="M425 42 H560" class="seta"/>
+        <path d="M520 150 H600 V64" class="seta"/><text x="528" y="144" class="sub">GPIO5 (PWM)</text>
+        <rect x="14" y="120" width="170" height="44" rx="8" class="caixa"/><text x="99" y="140" text-anchor="middle">BMP280 (barômetro)</text><text x="99" y="156" text-anchor="middle" class="sub">obrigatório · ±1 m relativo</text>
+        <rect x="14" y="190" width="170" height="44" rx="8" class="caixa" style="stroke-dasharray:4 3"/><text x="99" y="210" text-anchor="middle">MPU6050</text><text x="99" y="226" text-anchor="middle" class="sub">opcional · decolagem em ~20 ms</text>
+        <path d="M184 142 H330" class="seta"/><path d="M184 212 H250 V170 H330" class="seta"/><text x="200" y="136" class="sub">I²C GPIO6/7</text>
+        <rect x="330" y="258" width="190" height="44" rx="8" class="caixa"/><text x="425" y="278" text-anchor="middle">buzzer + transistor NPN</text><text x="425" y="294" text-anchor="middle" class="sub">localizador · bipa o apogeu</text>
+        <path d="M425 210 V258" class="seta"/><text x="432" y="238" class="sub">GPIO4</text>
+        <rect x="560" y="258" width="126" height="44" rx="8" class="caixa"/><text x="623" y="278" text-anchor="middle">divisor 100k/100k</text><text x="623" y="294" text-anchor="middle" class="sub">tensão da bateria</text>
+        <path d="M560 280 H540 V195 H520" class="seta"/><text x="528" y="190" class="sub">GPIO3</text>
+      </svg></div>
+      <p class="nota">Pinos de boot do ESP32-C3 (2, 8 e 9) evitados. O servo vai direto na bateria para o pico dele não derrubar os 3,3 V. Regra de segurança: chave desligada para plugar o USB, porque a LiPo está no pino 5V.</p>
+    </div>
+    <div class="cartao diagrama">
+      <h3>Máquina de estados do firmware</h3>
+      <div class="rolar"><svg viewBox="0 0 700 330" role="img" aria-label="Máquina de estados do computador de voo">
+        <defs><marker id="ponta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--tinta-3)"/></marker></defs>
+        <rect x="20" y="30" width="120" height="46" rx="10" class="caixa"/><text x="80" y="58" text-anchor="middle" style="font-weight:600">PREPARO</text>
+        <rect x="290" y="30" width="120" height="46" rx="10" class="caixa"/><text x="350" y="58" text-anchor="middle" style="font-weight:600">ARMADO</text>
+        <rect x="560" y="30" width="120" height="46" rx="10" class="caixa-d"/><text x="620" y="58" text-anchor="middle" style="font-weight:600">SUBIDA</text>
+        <rect x="560" y="200" width="120" height="46" rx="10" class="caixa-d"/><text x="620" y="228" text-anchor="middle" style="font-weight:600">DESCIDA</text>
+        <rect x="290" y="200" width="120" height="46" rx="10" class="caixa"/><text x="350" y="228" text-anchor="middle" style="font-weight:600">POUSADO</text>
+        <path d="M140 53 H290" class="seta" marker-end="url(#ponta)"/><text x="215" y="44" class="sub" text-anchor="middle">"Travar e armar"</text>
+        <text x="215" y="94" class="sub" text-anchor="middle">(ou sozinho após 90 s)</text><text x="215" y="109" class="sub" text-anchor="middle">mede o ruído do barômetro</text>
+        <path d="M410 53 H560" class="seta" marker-end="url(#ponta)"/><text x="485" y="44" class="sub" text-anchor="middle">altitude &gt; 4 m e</text><text x="485" y="94" class="sub" text-anchor="middle">subindo &gt; 6 m/s</text>
+        <path d="M620 76 V200" class="seta" marker-end="url(#ponta)"/>
+        <text x="608" y="124" class="sub" text-anchor="end">bloqueio de 1,6 s (motor queimando)</text>
+        <text x="608" y="140" class="sub" text-anchor="end">apogeu, acima de 12 m: v &lt; −0,3 m/s por 4 amostras</text>
+        <text x="608" y="156" class="sub" text-anchor="end">ou caiu 2,5 m do máximo</text>
+        <text x="608" y="172" class="sub" text-anchor="end">backup por tempo: 8,5 s → solta a ogiva</text>
+        <path d="M560 223 H410" class="seta" marker-end="url(#ponta)"/><text x="485" y="214" class="sub" text-anchor="middle">parado por 3 s</text><text x="485" y="240" class="sub" text-anchor="middle">(ou 120 s após abrir)</text>
+        <text x="20" y="200" class="sub">No pouso: salva o voo,</text><text x="20" y="216" class="sub">liga o Wi-Fi, bipa o apogeu.</text>
+        <text x="20" y="262" class="sub">Reset em voo (queda de tensão, travamento)</text><text x="20" y="278" class="sub">→ abre o paraquedas na hora.</text>
+        <text x="20" y="310" class="sub">Picos do sensor (&gt; 6σ) são ignorados.</text>
+      </svg></div>
+      <p class="nota">A lógica de voo (<code>voo.h</code>) não depende do Arduino: o mesmo arquivo compila no ESP32-C3 e no PC. Compila sem avisos (84% da flash, 30% da RAM).</p>
+    </div>
+  </div>
+  <div class="cartao" style="margin-top:16px"><div id="g-sil"></div></div>
+  <h3>Teste do firmware no computador (software-in-the-loop)</h3>
+  <p class="nota">O firmware real rodou no PC contra 12 trajetórias do OpenRocket (6 motores × 2 ventos), com 2 níveis de ruído, com e sem picos de ±60 Pa, com e sem sensor congelado na propulsão e com 5 sementes: 480 casos. Nenhuma decolagem falsa em 60 s no chão com rajadas. O teste pegou dois erros da primeira versão (pouso não detectado e backup abrindo antes do apogeu), já corrigidos.</p>
+  <div class="cartao" id="t-sil"></div>
+</section>
+
+<!-- ===================== MÉTODO ===================== -->
+<section id="metodo">
+  <div class="olho">Método</div>
+  <h2>Como o projeto foi feito</h2>
+  <ol class="passos">
+    <li><b>Regulamento primeiro</b>Cada regra rotulada (atende, proibido, ambíguo, precisa confirmar), com a página citada, antes de qualquer decisão de projeto.</li>
+    <li><b>Motor como caixa-preta</b>Dados dos vídeos oficiais, faixa de impulso limitada por dois trabalhos publicados e checada contra os voos da OBA. Doze curvas cobrem impulso e formato.</li>
+    <li><b>OpenRocket 24.12 sem janela</b>Os foguetes são montados peça por peça pela API Java do próprio programa (Python + JPype), com o motor em configuração de voo própria.</li>
+    <li><b>Otimização robusta</b>Nota de alcance médio e pior caso sobre motores e ventos, com restrições de estabilidade, saída da vara, flutter e imprimibilidade. Houve comparação com um projeto feito à mão.</li>
+    <li><b>CAD em código</b>STL gerados das mesmas cotas (manifold3d), estanques. Massa e CG de cada peça voltam para o OpenRocket.</li>
+    <li><b>Monte Carlo e tolerâncias</b>200 voos com vento, rajada, motor e montagem sorteados, mais a sensibilidade a cada erro de fabricação.</li>
+    <li><b>Firmware testado em simulação</b>A lógica de voo rodou no PC contra as trajetórias do OpenRocket, com ruído e falhas de sensor.</li>
+    <li><b>Revisão crítica no fim</b>Procurando erro de propósito. Ela achou aleta que precisaria de suporte na impressão e STL com defeito de malha, e os dois foram corrigidos antes de publicar.</li>
+  </ol>
+  <div class="aviso">O que ainda falta medir, e muda os números: o impulso real do motor (teste estático), as massas e folgas das peças impressas e o arrasto real (primeiro voo). A bancada de teste estático (Arduino + HX711 + célula de carga) e o script que transforma a medição em curva do OpenRocket já estão prontos no repositório.</div>
+</section>
+
+<!-- ===================== PLANO ===================== -->
+<section id="plano">
+  <div class="olho">Próximos passos</div>
+  <h2>Plano até a Jornada</h2>
+  <div class="grade2">
+    <div class="cartao">
+      <h3>Semana a semana</h3>
+      <div class="tabela-wrap"><table>
+        <tr><th>Semana</th><th>O que fazer</th></tr>
+        <tr><td style="white-space:nowrap">1</td><td>O professor confirma a inscrição na Turma 15 (até 20/10) e manda as dúvidas técnicas à organização; imprimir os gabaritos de folga.</td></tr>
+        <tr><td style="white-space:nowrap">2</td><td>Fazer motores com o professor (vídeos 210–216); teste de resistência (queima presa, sem instrumento).</td></tr>
+        <tr><td style="white-space:nowrap">3</td><td>Teste estático de 3 a 5 motores → curva medida → simular de novo.</td></tr>
+        <tr><td style="white-space:nowrap">4–5</td><td>Voos de teste do Foguete 1 na escola, a 45° e 50°, comparando o real com o simulado.</td></tr>
+        <tr><td style="white-space:nowrap">6</td><td>Imprimir, pintar (fluorescente), pesar e conferir o CG de 3 a 4 foguetes definitivos.</td></tr>
+        <tr><td style="white-space:nowrap">7–9</td><td>Foguete 2: eletrônica na bancada, teste de ejeção, primeiro voo com o motor medido.</td></tr>
+        <tr><td style="white-space:nowrap">10</td><td>Checklist da Jornada e apresentação de 5 minutos (o edital pede slides com fotos dos lançamentos).</td></tr>
+      </table></div>
+    </div>
+    <div class="cartao">
+      <h3>Custo estimado</h3>
+      <div class="tabela-wrap"><table>
+        <tr><th>Item</th><th class="num">Custo</th></tr>
+        <tr><td>Foguete 1 (filamento + massa epóxi), por foguete; tinta e fita são divididas</td><td class="num">R$ 6–9</td></tr>
+        <tr><td>Bancada de teste estático</td><td class="num">R$ 60–100</td></tr>
+        <tr><td>Eletrônica do Foguete 2</td><td class="num">R$ 90–130</td></tr>
+        <tr><td>Foguete 2 completo (sem motor)</td><td class="num">R$ 110–150</td></tr>
+      </table></div>
+      <h3>Segurança</h3>
+      <ul class="limpa">
+        <li>Motor exatamente como nos vídeos, feito com o professor; <b>nunca aumentar, trocar o cano ou colar o cap</b>.</li>
+        <li>Ignição elétrica a 25 m, protetor facial, luvas, público a pelo menos metade do apogeu (protocolo da OBA).</li>
+        <li>Sequência da norma BAR-2/2020: teste de resistência → teste estático → voo.</li>
+        <li>Foguete 2: acima de 150 m de apogeu, NOTAM ou campo liberado.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ARQUIVOS ===================== -->
+<section id="arquivos">
+  <div class="olho">Arquivos</div>
+  <h2>Tudo está no repositório</h2>
+  <div class="grade3">
+    <div class="cartao"><h4>OpenRocket (.ork)</h4><ul class="limpa">
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/blob/main/foguete1_obafog/F1_construtivel_v1.ork">Foguete 1 — variante A</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/blob/main/foguete1_obafog/F1_construtivel_v1B_ogiva_curta.ork">Foguete 1 — variante B</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/blob/main/foguete2_livre/F2_29mm_v1.ork">Foguete 2 — 29 mm</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/motor/eng">Curvas do motor (.eng)</a></li></ul></div>
+    <div class="cartao"><h4>Impressão 3D (STL)</h4><ul class="limpa">
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/foguete1_obafog/stl/F1_construtivel_v1">Foguete 1 — variante A + gabaritos</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/foguete1_obafog/stl/F1_construtivel_v1B_ogiva_curta">Foguete 1 — variante B</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/foguete2_livre/stl/F2_29mm_v1">Foguete 2 — 29 mm</a></li>
+      <li>Moldes em PDF: <a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/foguete1_obafog/moldes">transferidor da haste</a> · <a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/foguete2_livre/moldes">paraquedas</a></li></ul></div>
+    <div class="cartao"><h4>Documentos e código</h4><ul class="limpa">
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/blob/main/pesquisa/PESQUISA.md">Dossiê de pesquisa com fontes</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/blob/main/regulamento/CONFORMIDADE.md">Conformidade com o regulamento</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/blob/main/REVISAO.md">Revisão crítica</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/foguete2_livre/eletronica">Eletrônica e firmware</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/motor/teste_estatico">Bancada de teste estático</a></li>
+      <li><a href="https://github.com/murilo999-666/foguetes-modelo5-obafog/tree/main/scripts">Scripts (simulação, CAD, otimização)</a></li></ul></div>
+  </div>
+  <h3>Fontes principais</h3>
+  <ul class="limpa nota">
+    <li><a href="http://www.oba.org.br/sisglob/sisglob_arquivos/2026/REGULAMENTO%20DA%2020%C2%AA%20OBAFOG%20PARA%20O%20MODELO%205%20-%202026-compactado.pdf">Regulamento da 20ª OBAFOG — Modelo 5 (2026)</a> e edital da 100ª Jornada de Foguetes, Turma 15</li>
+    <li>Vídeos oficiais da OBA: <a href="https://youtu.be/K09RnU6daIM">208</a>, <a href="https://youtu.be/HOY6TW5Y5a4">210</a>, <a href="https://youtu.be/KAxPLGZrsJU">214</a>, <a href="https://youtu.be/xJjJKmWx2xI">215</a>, <a href="https://youtu.be/QO-kHBZBfBs">216</a> e <a href="https://youtu.be/Bp6O71fHFIg">Segurança em primeiro lugar</a></li>
+    <li><a href="https://scielo.br/j/rbef/a/dTQnxcQT6TGhnkYmMx4H6Sx/?lang=pt">Minifoguete a propelente sólido: aspectos teóricos e propostas experimentais para o ensino de física</a> (RBEF)</li>
+    <li><a href="http://ftp.demec.ufpr.br/foguete/Divulgacao/2021_Propelente_KNSu_a_frio_para%20minifoguetes_preparo_carregamento_estocagem_e_uso_Marchi.pdf">Marchi (GFCS/UFPR), Propelente KNSu a frio para minifoguetes</a> e <a href="http://ftp.demec.ufpr.br/foguete/Trabalhos/2014_Foltran_Moro_Silva_Ferreira_Araki_Marchi_SAB_2014.pdf">Foltran et al., velocidade de queima do KNSu</a></li>
+    <li><a href="http://ftp.demec.ufpr.br/foguete/apostila/norma-BAR-2-2020_versao_2020-12-03.pdf">Norma BAR-2/2020 — Associação Brasileira de Minifoguetes</a></li>
+    <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf">Datasheet ESP32-C3</a> · <a href="https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp280-ds001.pdf">Datasheet BMP280</a> · NACA TN 4197 (flutter de aleta)</li>
+    <li>OpenRocket 24.12 (Barrowman estendido; documentação técnica de S. Niskanen)</li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  Projeto de Murilo (<a href="https://github.com/murilo999-666">@murilo999-666</a>) · setembro de 2026.<br>
+  Pesquisa, simulações, CAD e código desenvolvidos com auxílio do Claude, a IA da Anthropic.<br>
+  Os números são simulações: o motor ainda precisa de teste estático e o foguete de voo de teste.
+</footer>
+
+<script src="assets/dados.js"></script>
+<script src="assets/graficos.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

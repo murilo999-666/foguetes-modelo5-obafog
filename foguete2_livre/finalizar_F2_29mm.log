@@ -1,0 +1,13 @@
+[10s] CAD ok: 132.1 g, 1.84 cal, paraquedas 390 mm
+lastro {'motor': 'I05', 'apogeu_sem_lastro_extra': 58.1, 'lastro_extra_g': 0.0, 'v_vara_com_lastro': 8.1}
+lastro {'motor': 'I07', 'apogeu_sem_lastro_extra': 114.4, 'lastro_extra_g': 0.0, 'v_vara_com_lastro': 10.1}
+lastro {'motor': 'I09', 'apogeu_sem_lastro_extra': 177.6, 'lastro_extra_g': 21, 'v_vara_com_lastro': 10.7}
+lastro {'motor': 'I115', 'apogeu_sem_lastro_extra': 258.3, 'lastro_extra_g': None, 'v_vara_com_lastro': 13.5, 'obs': 'nem com 63 g (o máximo que cabe no bico) fica abaixo de 140 m: precisa NOTAM ou campo liberado'}
+deriva [{'vento': 0.0, 'deriva_m': 17.2, 'apogeu': 114.4, 't_voo': 30.7, 'v_abertura': 9.463140770780118}, {'vento': 2.0, 'deriva_m': 29.6, 'apogeu': 112.6, 't_voo': 30.3, 'v_abertura': 10.80052507468231}, {'vento': 4.0, 'deriva_m': 53.2, 'apogeu': 108.4, 't_voo': 29.2, 'v_abertura': 12.206651840565664}, {'vento': 6.0, 'deriva_m': 91.8, 'apogeu': 105.4, 't_voo': 28.5, 'v_abertura': 12.322462093773556}]
+{'nome': 'NOMINAL 7 N.s, 87 graus, sem vento', 'apogeu': 114.36, 'v_max': 44.87, 'v_vara': 10.06, 'stab_min': 1.96, 'v_abertura': 9.46, 'v_descida': 4.45, 'v_impacto': 4.44, 't_voo': 30.74, 'total': 17.17, 'massa_g': 132.09}
+{'nome': 'Pessimista 5 N.s', 'apogeu': 58.09, 'v_max': 29.25, 'v_vara': 8.08, 'stab_min': 2.04, 'v_abertura': 9.52, 'v_descida': 4.45, 'v_impacto': 4.44, 't_voo': 16.82, 'total': 10.01, 'massa_g': 132.09}
+{'nome': 'Otimista 9 N.s (passa de 150 m: ver tabela de lastro)', 'apogeu': 177.59, 'v_max': 60.14, 'v_vara': 11.75, 'stab_min': 1.93, 'v_abertura': 9.49, 'v_descida': 4.46, 'v_impacto': 4.44, 't_voo': 45.93, 'total': 24.12, 'massa_g': 132.09}
+{'nome': 'Teto 11,5 N.s', 'apogeu': 261.48, 'v_max': 77.88, 'v_vara': 16.94, 'stab_min': 1.93, 'v_abertura': 9.59, 'v_descida': 4.47, 'v_impacto': 4.44, 't_voo': 65.58, 'total': 31.14, 'massa_g': 132.09}
+{'nome': '7 N.s progressiva (pior saida da vara)', 'apogeu': 110.22, 'v_max': 45.24, 'v_vara': 7.94, 'stab_min': 1.96, 'v_abertura': 9.45, 'v_descida': 4.45, 'v_impacto': 4.44, 't_voo': 29.85, 'total': 17.18, 'massa_g': 132.09}
+{'nome': '7 N.s vento lateral 4 m/s', 'apogeu': 108.36, 'v_max': 44.32, 'v_vara': 10.06, 'stab_min': 0.88, 'v_abertura': 12.21, 'v_descida': 4.45, 'v_impacto': 5.98, 't_voo': 29.25, 'total': 53.24, 'massa_g': 132.09}
+[fim em 21s]

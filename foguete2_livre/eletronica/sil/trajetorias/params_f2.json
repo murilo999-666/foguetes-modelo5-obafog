@@ -1,0 +1,46 @@
+{
+ "D": 29.0,
+ "nose_shape": "ELLIPSOID",
+ "nose_param": 0.0,
+ "nose_len": 115.0,
+ "nose_shoulder": 55.0,
+ "body_len": 170.0,
+ "fin_n": 3,
+ "fin_root": 36.0,
+ "fin_tip": 10.0,
+ "fin_sweep": 26.0,
+ "fin_span": 39.0,
+ "fin_t": 1.6,
+ "ballast_g": 0.0,
+ "chute_lines": 8,
+ "massas_cad": {
+  "ogiva": {
+   "massa_g": 12.481,
+   "cg_mm": 93.947
+  },
+  "tubo_corpo": {
+   "massa_g": 15.513,
+   "cg_mm": 82.412
+  },
+  "lata_estrutura": {
+   "massa_g": 18.753,
+   "cg_mm": 41.654
+  },
+  "aletas": {
+   "massa_g": 6.098,
+   "cg_mm": 22.28
+  },
+  "guia_traseira": {
+   "massa_g": 0.662,
+   "cg_mm": 10.0
+  },
+  "berco": {
+   "massa_g": 6.119
+  },
+  "pistao": {
+   "massa_g": 1.985
+  }
+ },
+ "chute_d": 390,
+ "chute_line_len": 390
+}

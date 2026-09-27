@@ -1,0 +1,250 @@
+{
+ "versao": "F2_26mm_v1",
+ "params": {
+  "D": 26.0,
+  "nose_shape": "POWER",
+  "nose_param": 0.5,
+  "nose_len": 65.0,
+  "nose_shoulder": 55.0,
+  "body_len": 180.0,
+  "fin_n": 3,
+  "fin_root": 38.0,
+  "fin_tip": 23.0,
+  "fin_sweep": 15.0,
+  "fin_span": 26.0,
+  "fin_t": 1.6,
+  "ballast_g": 3.0,
+  "chute_lines": 8,
+  "massas_cad": {
+   "ogiva": {
+    "massa_g": 7.422,
+    "cg_mm": 67.928
+   },
+   "tubo_corpo": {
+    "massa_g": 14.709,
+    "cg_mm": 87.074
+   },
+   "lata_estrutura": {
+    "massa_g": 14.035,
+    "cg_mm": 40.613
+   },
+   "aletas": {
+    "massa_g": 5.264,
+    "cg_mm": 21.87
+   },
+   "guia_traseira": {
+    "massa_g": 0.662,
+    "cg_mm": 10.0
+   },
+   "berco": {
+    "massa_g": 5.282
+   },
+   "pistao": {
+    "massa_g": 1.616
+   }
+  },
+  "chute_d": 370,
+  "chute_line_len": 370
+ },
+ "estabilidade": {
+  "cp_mm": 256.8588651719369,
+  "cg_mm": 211.11522171742251,
+  "cg_burnout_mm": 188.44487055855853,
+  "ref_mm": 26.0,
+  "cal": 1.7593709020967063,
+  "cal_burnout": 2.6313074851299363,
+  "massa_g": 122.02619328278065,
+  "massa_seca_g": 100.02619328278065,
+  "cna": 8.926166458068344
+ },
+ "cad": [
+  {
+   "arquivo": "F2_ogiva_baia_v1.stl",
+   "watertight": true,
+   "volume_cm3": 5.985,
+   "massa_g": 7.42,
+   "cg_z_mm": 52.07,
+   "altura_mm": 120.0,
+   "envelope_xy_mm": 26.6,
+   "genus": 1
+  },
+  {
+   "arquivo": "F2_tubo_corpo_v1.stl",
+   "watertight": true,
+   "volume_cm3": 11.862,
+   "massa_g": 14.71,
+   "cg_z_mm": 92.93,
+   "altura_mm": 180.0,
+   "envelope_xy_mm": 44.7,
+   "genus": 3
+  },
+  {
+   "arquivo": "F2_lata_aletas_v1.stl",
+   "watertight": true,
+   "volume_cm3": 16.099,
+   "massa_g": 19.96,
+   "cg_z_mm": 46.34,
+   "altura_mm": 115.0,
+   "envelope_xy_mm": 78.0,
+   "genus": 2
+  },
+  {
+   "arquivo": "F2_berco_eletronica_v1.stl",
+   "watertight": true,
+   "volume_cm3": 4.26,
+   "massa_g": 5.28,
+   "cg_z_mm": 35.84,
+   "altura_mm": 93.5,
+   "envelope_xy_mm": 22.0,
+   "genus": 3
+  },
+  {
+   "arquivo": "F2_pistao_v1.stl",
+   "watertight": true,
+   "volume_cm3": 1.303,
+   "massa_g": 1.62,
+   "cg_z_mm": 2.77,
+   "altura_mm": 10.0,
+   "envelope_xy_mm": 23.7,
+   "genus": 1
+  }
+ ],
+ "simulacoes_no_ork": [
+  {
+   "nome": "NOMINAL 7 N.s, 87 graus, sem vento",
+   "apogeu": 135.92,
+   "v_max": 49.92,
+   "v_vara": 10.57,
+   "stab_min": 1.91,
+   "v_abertura": 9.65,
+   "v_descida": 4.48,
+   "v_impacto": 4.46,
+   "t_voo": 35.81,
+   "total": 19.56,
+   "massa_g": 122.03
+  },
+  {
+   "nome": "Pessimista 5 N.s",
+   "apogeu": 70.38,
+   "v_max": 32.9,
+   "v_vara": 8.55,
+   "stab_min": 1.99,
+   "v_abertura": 9.69,
+   "v_descida": 4.47,
+   "v_impacto": 4.46,
+   "t_voo": 19.83,
+   "total": 11.58,
+   "massa_g": 122.03
+  },
+  {
+   "nome": "Otimista 9 N.s (passa de 150 m: ver tabela de lastro)",
+   "apogeu": 208.27,
+   "v_max": 66.57,
+   "v_vara": 12.31,
+   "stab_min": 1.87,
+   "v_abertura": 9.76,
+   "v_descida": 4.48,
+   "v_impacto": 4.46,
+   "t_voo": 52.98,
+   "total": 27.28,
+   "massa_g": 122.03
+  },
+  {
+   "nome": "Teto 11,5 N.s",
+   "apogeu": 302.49,
+   "v_max": 85.86,
+   "v_vara": 17.79,
+   "stab_min": 1.88,
+   "v_abertura": 9.84,
+   "v_descida": 4.49,
+   "v_impacto": 4.46,
+   "t_voo": 74.83,
+   "total": 34.98,
+   "massa_g": 122.03
+  },
+  {
+   "nome": "7 N.s progressiva (pior saida da vara)",
+   "apogeu": 131.53,
+   "v_max": 50.35,
+   "v_vara": 8.35,
+   "stab_min": 1.91,
+   "v_abertura": 9.7,
+   "v_descida": 4.48,
+   "v_impacto": 4.46,
+   "t_voo": 34.87,
+   "total": 19.6,
+   "massa_g": 122.03
+  },
+  {
+   "nome": "7 N.s vento lateral 4 m/s",
+   "apogeu": 130.19,
+   "v_max": 49.44,
+   "v_vara": 10.57,
+   "stab_min": 0.89,
+   "v_abertura": 12.01,
+   "v_descida": 4.48,
+   "v_impacto": 5.99,
+   "t_voo": 34.43,
+   "total": 71.28,
+   "massa_g": 122.03
+  }
+ ],
+ "tabela_lastro": [
+  {
+   "motor": "I05",
+   "apogeu_sem_lastro_extra": 70.4,
+   "lastro_extra_g": 0.0,
+   "v_vara_com_lastro": 8.5
+  },
+  {
+   "motor": "I07",
+   "apogeu_sem_lastro_extra": 135.9,
+   "lastro_extra_g": 0.0,
+   "v_vara_com_lastro": 10.6
+  },
+  {
+   "motor": "I09",
+   "apogeu_sem_lastro_extra": 208.3,
+   "lastro_extra_g": null,
+   "v_vara_com_lastro": 12.3,
+   "obs": "nem com 16 g (o m\u00e1ximo que cabe no bico) fica abaixo de 140 m: precisa NOTAM ou campo liberado"
+  },
+  {
+   "motor": "I115",
+   "apogeu_sem_lastro_extra": 299.2,
+   "lastro_extra_g": null,
+   "v_vara_com_lastro": 14.2,
+   "obs": "nem com 16 g (o m\u00e1ximo que cabe no bico) fica abaixo de 140 m: precisa NOTAM ou campo liberado"
+  }
+ ],
+ "tabela_deriva": [
+  {
+   "vento": 0.0,
+   "deriva_m": 19.6,
+   "apogeu": 135.9,
+   "t_voo": 35.8,
+   "v_abertura": 9.65202457036244
+  },
+  {
+   "vento": 2.0,
+   "deriva_m": 39.3,
+   "apogeu": 134.3,
+   "t_voo": 35.4,
+   "v_abertura": 10.66206114487617
+  },
+  {
+   "vento": 4.0,
+   "deriva_m": 71.3,
+   "apogeu": 130.2,
+   "t_voo": 34.4,
+   "v_abertura": 12.009618589736405
+  },
+  {
+   "vento": 6.0,
+   "deriva_m": 112.1,
+   "apogeu": 126.0,
+   "t_voo": 33.4,
+   "v_abertura": 12.601682761918687
+  }
+ ]
+}

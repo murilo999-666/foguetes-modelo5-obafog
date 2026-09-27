@@ -1,0 +1,14 @@
+{
+ "nose_shape": "ELLIPSOID",
+ "nose_param": 0.0,
+ "nose_len": 150.0,
+ "body_len": 55.0,
+ "fin_n": 4,
+ "fin_root": 29.0,
+ "fin_tip": 9.0,
+ "fin_sweep": 20.0,
+ "fin_span": 36.0,
+ "fin_t": 1.6,
+ "ballast_g": 10.0,
+ "elev": 46.0
+}

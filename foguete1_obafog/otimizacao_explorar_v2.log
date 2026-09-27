@@ -1,0 +1,29 @@
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``multivariate`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``group`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+C:\Users\muril\openrocket-optimizer\.venv\Lib\site-packages\optuna\_experimental.py:33: ExperimentalWarning: Argument ``constant_liar`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+[    50s] #8 J=231.7 media=277 min=150 cal=1.74 m=102g vara=12.1 elev=38 OGIVE L=505 aletas 4x39/12/44/11 t2.0 lastro 2.0g
+[    51s] #4 J=304.4 media=348 min=215 cal=1.23 m=88g vara=13.2 elev=48 ELLIPSOID L=250 aletas 3x22/10/66/10 t2.0 lastro 6.5g
+[    82s] #39 J=309.5 media=360 min=204 cal=1.21 m=87g vara=13.4 elev=39 HAACK L=280 aletas 3x26/14/45/8 t1.2 lastro 8.0g
+   ... 112/1300 avaliados, 41 viáveis, 142s
+[   176s] #132 J=317.5 media=352 min=220 cal=1.39 m=89g vara=12.9 elev=51 POWER L=270 aletas 4x18/11/37/7 t1.6 lastro 11.0g
+[   202s] #151 J=319.9 media=363 min=210 cal=1.32 m=88g vara=13.2 elev=43 POWER L=270 aletas 4x25/5/43/14 t1.6 lastro 10.0g
+[   264s] #202 J=323.5 media=372 min=217 cal=1.24 m=86g vara=13.3 elev=41 POWER L=295 aletas 3x19/5/49/10 t1.6 lastro 8.5g
+[   264s] #196 J=335.7 media=382 min=228 cal=1.27 m=87g vara=13.1 elev=47 POWER L=215 aletas 4x18/6/41/7 t1.2 lastro 14.5g
+   ... 210/1300 avaliados, 104 viáveis, 274s
+   ... 308/1300 avaliados, 158 viáveis, 409s
+   ... 406/1300 avaliados, 213 viáveis, 522s
+   ... 504/1300 avaliados, 267 viáveis, 628s
+   ... 602/1300 avaliados, 312 viáveis, 730s
+   ... 700/1300 avaliados, 360 viáveis, 828s
+   ... 812/1300 avaliados, 419 viáveis, 935s
+[   944s] #814 J=336.1 media=384 min=235 cal=1.23 m=85g vara=13.4 elev=48 POWER L=225 aletas 4x18/7/44/6 t1.2 lastro 13.5g
+[   954s] #830 J=339.3 media=379 min=228 cal=1.37 m=86g vara=13.3 elev=46 POWER L=270 aletas 4x18/7/40/6 t1.2 lastro 11.5g
+   ... 910/1300 avaliados, 460 viáveis, 1023s
+   ... 1008/1300 avaliados, 510 viáveis, 1116s
+   ... 1106/1300 avaliados, 553 viáveis, 1192s
+   ... 1204/1300 avaliados, 601 viáveis, 1270s
+   ... 1300/1300 avaliados, 646 viáveis, 1369s
+[fim em 1369s]
