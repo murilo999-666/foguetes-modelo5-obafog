@@ -22,6 +22,13 @@ Dois Pythons:
 | `cad_foguetes.py f1\|f2\|gabaritos\|massas` | sistema | STL paramétricos e `massas_cad.json` |
 | `gerar_moldes.py <D_paraquedas>` | sistema | molde do paraquedas e transferidor da haste (PDF A4, 1:1) |
 | `render_previews.py` | sistema | imagem de cada foguete montado |
+| `render_openrocket.py <pasta>` | venv, com `ORX_JVM_OPTS=-Djava.awt.headless=false` | vistas lateral e traseira desenhadas pelo próprio OpenRocket (CG, CP, massas), em PNG |
+| `exportar_dados_site.py <pasta da página>` | venv | números e curvas da página → `assets/dados.js` |
+| `gerar_modelos_web.py <pasta>` | sistema | STL leves para o visualizador 3D da página + `modelos.json` (massas do STL de impressão) |
+
+A página do projeto fica em `../docs/` (GitHub Pages). Depois de mudar um foguete, atualize com
+`exportar_dados_site.py ../docs`, `gerar_modelos_web.py ../docs/modelos` e
+`render_openrocket.py ../docs/img`.
 
 Os motores são gerados por `../motor/gerar_motores.py` (Python do sistema, só numpy). A curva
 medida na bancada entra por `../motor/teste_estatico/para_eng.py`.

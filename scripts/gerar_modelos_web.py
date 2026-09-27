@@ -7,14 +7,21 @@ RAIZ = Path(__file__).resolve().parents[1]
 cad.SEG = 56
 cad.N_PERFIL = 70
 
+def massas_impressao(pasta_stl: Path) -> dict:
+    """Massa de cada peça pelo STL de impressão (a do resumo), não pela malha leve da página."""
+    resumo = pasta_stl.parents[1] / f"{pasta_stl.name}_resumo.json"
+    cad_lista = json.loads(resumo.read_text(encoding="utf-8")).get("cad", [])
+    return {tipo: round(c["massa_g"], 1) for c in cad_lista for tipo in ("lata", "tubo", "ogiva") if tipo in c["arquivo"]}
+
 def gerar(pasta_stl: Path, fog: str, saida: Path, tag: str) -> dict:
     p = json.loads((pasta_stl / "params_cad.json").read_text(encoding="utf-8"))
     Lfc = p.get("fincan_len", 100.0)
     pecas = []
+    mi = massas_impressao(pasta_stl)
     def exp(m, nome, dz, cor, rotulo):
         arq = saida / f"{tag}_{nome}.stl"
         info = cad.exportar(m, arq, p.get("material", "PLA"))
-        pecas.append({"arquivo": arq.name, "z": dz, "cor": cor, "nome": rotulo, "massa_g": info["massa_g"]})
+        pecas.append({"arquivo": arq.name, "z": dz, "cor": cor, "nome": rotulo, "massa_g": mi.get(nome, info["massa_g"])})
     exp(cad.lata_aletas(p, olhal=(fog == "f2")), "lata", 0.0, "#eb6834", "Lata de aletas (luva do motor + guias)")
     topo = Lfc
     if p["body_len"] > 1:
